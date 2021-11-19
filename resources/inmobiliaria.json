@@ -1,0 +1,101 @@
+[
+       {
+            "title":  "Piso en venta en Paseo del Empecinado, El Carmen - Barrio Gimeno",
+            "services":{
+               "bedrooms": 3,
+               "bathrooms": 1,
+               "m2": "60m²",
+               "floors":1
+            },
+            "Description": "Piso soleado en Calle Carmen junto al bulevar, sol todo el dia, suelos de parque",
+            "price": "115.000€",
+            "features":{
+                 "type":"Piso",
+                 "elevator": "Si",
+                 "antiquity": "30 a 50 anys"
+            }
+
+       },
+
+       {
+            "title":  "Piso en venta en Los Vadillos - R. Sanitaria - Pozanos",
+            "services":{
+               "bedrooms": 3,
+               "bathrooms": 1,
+               "m2": "80m²",
+               "floors": 1
+            },
+            "Description": "Fantástica vivienda totalmente reformada, muy centrica a 5 minutos de la Catedral  ",
+            "price": "155.000€",
+            "features":{
+                 "type":"Piso",
+                 "elevator": "Si",
+                 "antiquity": "30 a 50 anys"
+            }
+
+       },
+
+       {
+            "title":  "Casa o chalet en venta en La Fuente, 1, Isar",
+            "services":{
+               "bedrooms": 4,
+               "bathrooms": 1,
+               "m2": "420m²",
+               "floors": 1
+            },
+            "Description": "Muy cerca de Burgos, se vende esta fantástica casa de piedra en esquina a dos calles ",
+            "price": "16.900€",
+            "features":{
+                 "type":"Casa",
+                 "antiquity": "70 a 100 anys"
+            }
+
+       },
+
+       {
+            "title":  "Casa adosada en venta en Calle Diego Polo, San Pedro y San Felices",
+            "services":{
+               "bedrooms": 6,
+               "bathrooms": 1,
+               "m2": "295m²",
+               "floors": 1
+            },
+            "Description": "Zona San Pedro y San Felices. Vivienda urbana ubicada a 10 minutos del centro. Tiene una superficie de 602 m2, de los que corresponden 135,50 m2 a la casa, y el resto a la cerca y corral. ",
+            "price": "385.000€",
+            "features":{
+                 "type":"Casa",
+                 "antiquity": "50 a 70 anys"
+            }
+
+       },
+
+       {
+            "title":  "Garaje en venta en Calle Osca, 6, La Torre - Playa de Chilches",
+            "services":{
+               "m2": "15 m²",
+               "floors": 1
+            },
+            "Description": "Se vende una o dos plazas de garaje en moncofar, (castellon) en la calle huesca. ",
+            "price": "12.900€",
+            "features":{
+                 "type":"Garaje",
+                 "antiquity": "10 a 20 anys"
+            }
+
+       },
+
+       {
+            "title":  "Garaje en venta en Centro de la ciudad - Valencia",
+            "services":{
+               "m2": "17 m²",
+               "floors": 1
+            },
+            "Description": "",
+            "price": "10.800€",
+            "features":{
+                 "type":"Garaje",
+                 "antiquity": "5 a 12 anys"
+            }
+
+       }
+]
