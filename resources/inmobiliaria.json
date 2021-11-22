@@ -4,10 +4,10 @@
             "services":{
                "bedrooms": 3,
                "bathrooms": 1,
-               "m2": "60m²",
+               "m2": "60",
                "floors":1
             },
-            "Description": "Piso soleado en Calle Carmen junto al bulevar, sol todo el dia, suelos de parque",
+            "description": "Piso soleado en Calle Carmen junto al bulevar, sol todo el dia, suelos de parque",
             "price": "115.000€",
             "features":{
                  "type":"Piso",
@@ -22,10 +22,10 @@
             "services":{
                "bedrooms": 3,
                "bathrooms": 1,
-               "m2": "80m²",
+               "m2": "80",
                "floors": 1
             },
-            "Description": "Fantástica vivienda totalmente reformada, muy centrica a 5 minutos de la Catedral  ",
+            "description": "Fantástica vivienda totalmente reformada, muy centrica a 5 minutos de la Catedral  ",
             "price": "155.000€",
             "features":{
                  "type":"Piso",
@@ -40,10 +40,10 @@
             "services":{
                "bedrooms": 4,
                "bathrooms": 1,
-               "m2": "420m²",
+               "m2": "420",
                "floors": 1
             },
-            "Description": "Muy cerca de Burgos, se vende esta fantástica casa de piedra en esquina a dos calles ",
+            "description": "Muy cerca de Burgos, se vende esta fantástica casa de piedra en esquina a dos calles ",
             "price": "16.900€",
             "features":{
                  "type":"Casa",
@@ -57,10 +57,10 @@
             "services":{
                "bedrooms": 6,
                "bathrooms": 1,
-               "m2": "295m²",
+               "m2": "295",
                "floors": 1
             },
-            "Description": "Zona San Pedro y San Felices. Vivienda urbana ubicada a 10 minutos del centro. Tiene una superficie de 602 m2, de los que corresponden 135,50 m2 a la casa, y el resto a la cerca y corral. ",
+            "description": "Zona San Pedro y San Felices. Vivienda urbana ubicada a 10 minutos del centro. Tiene una superficie de 602 m2, de los que corresponden 135,50 m2 a la casa, y el resto a la cerca y corral. ",
             "price": "385.000€",
             "features":{
                  "type":"Casa",
@@ -75,7 +75,7 @@
                "m2": "15 m²",
                "floors": 1
             },
-            "Description": "Se vende una o dos plazas de garaje en moncofar, (castellon) en la calle huesca. ",
+            "description": "Se vende una o dos plazas de garaje en moncofar, (castellon) en la calle huesca. ",
             "price": "12.900€",
             "features":{
                  "type":"Garaje",
@@ -90,7 +90,7 @@
                "m2": "17 m²",
                "floors": 1
             },
-            "Description": "",
+            "description": "",
             "price": "10.800€",
             "features":{
                  "type":"Garaje",
