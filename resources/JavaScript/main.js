@@ -30,7 +30,7 @@ function loadHome(title, services, description, price, freatures) {
   loadServices(services);
   return (
     '<div class="card m-3 col-sm-1" style="width: 18rem">' +
-    '<img src="resources/imgs/casa.jpeg" class="card-img-top" alt="..." />' +
+    '<img src="/resources/imgs/casa.jpeg" class="card-img-top" alt="..." />' +
     '<div class="card-body">' +
     '<h5 class="card-title">' +
     title +
