@@ -38,3 +38,37 @@ body{
 .nav-link:hover{
        color: black;
 }
+
+
+form{
+       background-color: #393E41;
+       border-radius:10px;
+       color: white;
+}
+
+.form-control{
+       color: white;
+       background: rgb(88, 123, 127);
+}
+
+.form-control:focus {
+   color: white;
+  background: rgb(88, 123, 127);
+}
+
+.carrusel-img{
+ animation-name: fadeIn;
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
+}
+
+@keyframes fadeIn {
+  from {
+       opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+

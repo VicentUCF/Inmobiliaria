@@ -1,5 +1,8 @@
 var tipo = "all";
 var productes;
+var posicionActual = 0;
+var interval;
+
 
 window.onload = () => {
   let all_btn = document.getElementById("all");
@@ -57,7 +60,16 @@ function setListeners() {
       product.title.toLowerCase().includes(buscant.toLowerCase())
     );
 
-    loadProducts(resultado, "all");
+    if (resultado.length > 0){
+      loadProducts(resultado, "all");
+    }else{
+      Swal.fire({
+        title: "Element not Found!",
+        icon: "question",
+      });
+    }
+
+    
   };
 
   price_up.onclick = function () {
@@ -134,14 +146,25 @@ function knowMoreBtn(inmueble) {
 
     let btn = document.getElementById(inmueble);
 
-    btn.addEventListener('click', function(){
-       const resultado = productes.find(
-         (product) => product.features.id === inmueble
-       );
 
-       let content = document.getElementById("content");
-       content.innerHTML = knowMore(resultado);
-       contactBTN();
+    btn.addEventListener('click', function(){
+      const resultado = productes.find(
+        (product) => product.features.id === inmueble
+      );
+
+      let content = document.getElementById("content");
+      content.innerHTML = knowMore(resultado);
+
+      let imagenes = [
+        "../resources/imgs/casa.jpeg",
+        "../resources/imgs/edificio.jpg",
+        "../resources/imgs/garaje.jpg",
+      ];
+
+      clearInterval(interval);
+      contactBTN();
+      showImg(imagenes);
+      play(imagenes);
     });
 }
 
@@ -150,6 +173,7 @@ function contactBTN() {
   btn.addEventListener("click", function () {
     let content = document.getElementById("content");
     content.innerHTML = loadForm();
+    validateForm();
   });
 }
 
@@ -158,11 +182,7 @@ function knowMore(product) {
     '<div class="m-1 d-flex justify-content-center">' +
     '<div class="card col-10">' +
     '<div class="row">' +
-    '<div class="col-lg-6">' +
-    '<img src="/resources/imgs/' +
-    product.features.img +
-    '" class="img-fluid" style="width=800px;heigth:500px">' +
-    "</div>" +
+    printCarrusel() +
     '<div class="col-lg-6">' +
     '<div class="ms-2 card-body">' +
     '<h3 class="card-text mt-3">' +
@@ -170,19 +190,17 @@ function knowMore(product) {
       product.price
     ) +
     "</h3>" +
-    "<div>" +
-    '<ul class="d-inline-flex">' +
+    '<ul class="d-inline-flex"style="color:#e2c044">' +
     '<li class="row me-2"><h5><i class="fa fa-shower"></i> ' +
     product.services.bathrooms +
-    " bath</h5></li>" +
+    " bath.</h5></li>" +
     '<li class="row me-2"><h5><i class="fa fa-bed"></i> ' +
     product.services.bedrooms +
     " bed.</h5></li>" +
     '<li class="row me-2"><h5><i class="fa fa-cube"></i> ' +
     product.services.m2 +
-    " m2</h5></li>" +
+    "m²</h5></li>" +
     "</ul> " +
-    "</div>" +
     '<h3 class="card-title">' +
     product.title +
     "</h3> " +
@@ -190,7 +208,7 @@ function knowMore(product) {
     product.description +
     "</p>" +
     '<div class="me-4" style="border:2px solid white;"></div>' +
-    "<div>" +
+    "<div col-lg-12>" +
     "<h2>Caracteristicas</h2>" +
     "<ul>" +
     '<li class="row me-2"><h5><i class="fa fa-home me-1"></i>Tipo de inmueble: ' +
@@ -218,18 +236,58 @@ function knowMore(product) {
   );
 }
 
-
 function loadForm(){
-  return('<div class="mb-3">'+
-  '<label for="exampleFormControlInput1" class="form-label">Email address</label>'+
-  '<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">'+
-  '</div>'+
-  '<div class="mb-3">'+
-  '<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>'+
-  '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>'+
-  '<button class="btn btn-primary" type="submit>Submit</button>'+
-  '</div>');
+  return (
+    '<form id="contact" class="m-3 col-6 justify-content-center  rounded p-4" action="index.html">' +
+    '<h1><i class="fas fa-address-card me-2"></i>Contactanos</h1>' +
+    '<div class="mb-3">' +
+    '<label for="email" class="form-label">Email address<i class="fas fa-envelope ms-2 "></i></label>' +
+    '<input type="email" class="form-control" id="email" placeholder="name@example.com" required>' +
+    "</div>" +
+    '<div class="mb-3">' +
+    '<label for="comment" class="form-label">Comment<i class="fas fa-comments ms-2"></i></label>' +
+    '<textarea class="form-control" id="comment" rows="3" required></textarea>' +
+    '<button class="btn btn-primary mt-2">Submit</button>' +
+    "</form>" +
+    "</div>"
+  );
 }
+
+function validateForm(){
+  let correct = true;
+  let form = document.getElementById("contact");
+  let email = document.getElementById('email');
+  email.onchange = function(){
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(email.value.match(mailformat)){ 
+      email.className = 'form-control is-valid';
+      email.setCustomValidity('');
+    }else{
+      correct = false;
+      email.className = "form-control is-invalid";
+      email.setCustomValidity('not a valid email');
+    }
+  }
+
+  let comment = document.getElementById('comment');
+  comment.onchange = function(){
+    console.log('validant');
+     if (comment.value.length > 3) {
+       comment.className = "form-control is-valid";
+       comment.setCustomValidity("");
+     } else {
+       correct = false;
+       comment.className = "form-control is-invalid";
+       comment.setCustomValidity("rellena este campo");
+     }
+  }
+
+  if (correct){
+    form.submit;
+  }
+ 
+}
+
 
 function loadServices(services) {
   let icon = "";
@@ -264,4 +322,39 @@ function loadServices(services) {
   }
 
   return lista;
+}
+
+function printCarrusel() {
+  return (
+    '<div class="col-lg-6">' +
+    '<img id="imagen" class="card-img-top img-fluid carrusel-img"></img>' +
+    "</div>"
+  );
+}
+
+function play(imagenes) {
+  let imagen = document.querySelector("#imagen");
+  if(imagen != null){
+     interval = setInterval(function () {
+       nextPhoto(imagenes);
+     }, 2000);
+  }
+  
+}
+
+function nextPhoto(imagenes) {
+  if (posicionActual >= imagenes.length - 1) {
+    posicionActual = 0;
+  } else {
+    posicionActual++;
+  }
+  showImg(imagenes);
+}
+
+function showImg(imagenes) {
+  let imagen = document.querySelector("#imagen");
+  if(imagen != null){
+    imagen.src = imagenes[posicionActual];
+  }
+  
 }
