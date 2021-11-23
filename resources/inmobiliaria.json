@@ -4,13 +4,15 @@
             "services":{
                "bedrooms": 3,
                "bathrooms": 1,
-               "m2": "60",
+               "m2": 60,
                "floors":1
             },
             "description": "Piso soleado en Calle Carmen junto al bulevar, sol todo el dia, suelos de parque",
-            "price": "115.000€",
+            "price": 115000,
             "features":{
-                 "type":"Piso",
+                 "id": "1",
+                 "type":"apartament",
+                 "img":"edificio.jpg",
                  "elevator": "Si",
                  "antiquity": "30 a 50 anys"
             }
@@ -22,13 +24,15 @@
             "services":{
                "bedrooms": 3,
                "bathrooms": 1,
-               "m2": "80",
+               "m2": 80,
                "floors": 1
             },
             "description": "Fantástica vivienda totalmente reformada, muy centrica a 5 minutos de la Catedral  ",
-            "price": "155.000€",
+            "price": 155000,
             "features":{
-                 "type":"Piso",
+                 "id": "2",
+                 "type":"apartament",
+                 "img":"edificio.jpg",
                  "elevator": "Si",
                  "antiquity": "30 a 50 anys"
             }
@@ -40,13 +44,15 @@
             "services":{
                "bedrooms": 4,
                "bathrooms": 1,
-               "m2": "420",
+               "m2": 420,
                "floors": 1
             },
             "description": "Muy cerca de Burgos, se vende esta fantástica casa de piedra en esquina a dos calles ",
-            "price": "16.900€",
+            "price": 16900,
             "features":{
-                 "type":"Casa",
+                 "id": "3",
+                 "type":"home",
+                 "img":"casa.jpeg",
                  "antiquity": "70 a 100 anys"
             }
 
@@ -57,13 +63,15 @@
             "services":{
                "bedrooms": 6,
                "bathrooms": 1,
-               "m2": "295",
+               "m2": 295,
                "floors": 1
             },
             "description": "Zona San Pedro y San Felices. Vivienda urbana ubicada a 10 minutos del centro. Tiene una superficie de 602 m2, de los que corresponden 135,50 m2 a la casa, y el resto a la cerca y corral. ",
-            "price": "385.000€",
+            "price": 385000,
             "features":{
-                 "type":"Casa",
+                 "id": "4",
+                 "type":"home",
+                 "img":"casa.jpeg",
                  "antiquity": "50 a 70 anys"
             }
 
@@ -72,13 +80,15 @@
        {
             "title":  "Garaje en venta en Calle Osca, 6, La Torre - Playa de Chilches",
             "services":{
-               "m2": "15 m²",
+               "m2": 15,
                "floors": 1
             },
             "description": "Se vende una o dos plazas de garaje en moncofar, (castellon) en la calle huesca. ",
-            "price": "12.900€",
+            "price": 12900,
             "features":{
-                 "type":"Garaje",
+                 "id": "5",
+                 "type":"garage",
+                 "img":"garaje.jpg",
                  "antiquity": "10 a 20 anys"
             }
 
@@ -87,13 +97,15 @@
        {
             "title":  "Garaje en venta en Centro de la ciudad - Valencia",
             "services":{
-               "m2": "17 m²",
+               "m2": 17,
                "floors": 1
             },
             "description": "",
-            "price": "10.800€",
+            "price": 10800,
             "features":{
-                 "type":"Garaje",
+                 "id": "6",
+                 "type":"garage",
+                 "img":"garaje.jpg",
                  "antiquity": "5 a 12 anys"
             }
 

@@ -1,3 +1,7 @@
+*{
+       padding: 0;
+       margin: 0;
+}
 body{
        background-color: #D3D0CB;
 }
@@ -22,6 +26,10 @@ body{
 #buscador{
  background: rgb(88, 123, 127);
  background: linear-gradient(180deg, rgba(88, 123, 127, 1) 80%, rgba(211, 208, 203, 1) 100%);
+}
+
+.dropdown-item, .dropdown-menu{
+       background: rgb(88, 123, 127);
 }
 .nav-link {
        color: white;
