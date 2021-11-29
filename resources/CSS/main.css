@@ -19,8 +19,7 @@ body{
 #portada{
      
        background-image: url('/resources/imgs/portada.webp');
-       background-repeat: no-repeat;
-       width: 100%;
+       background-size: cover;
        height:300px;
 }
 #buscador{
@@ -56,19 +55,28 @@ form{
   background: rgb(88, 123, 127);
 }
 
-.carrusel-img{
- animation-name: fadeIn;
- animation-duration: 2s;
- animation-iteration-count: infinite;
-}
+
 
 @keyframes fadeIn {
   from {
-       opacity: 0;
+       opacity:0;
   }
-
-  to {
+  50%{
+       opacity:1;
+  }
+  80% {
     opacity: 1;
   }
+  to{
+     opacity:0;
+  }
 }
+
+ .carrusel-img {
+   animation-name: fadeIn;
+   animation-timing-function: ease-in-out;
+   animation-iteration-count: infinite;
+   animation-duration: 4s;
+   animation-direction: alternate;
+ }
 

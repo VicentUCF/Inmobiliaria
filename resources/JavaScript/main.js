@@ -9,6 +9,7 @@ window.onload = () => {
   let homes_btn = document.getElementById("homes");
   let apartaments_btn = document.getElementById("apartaments");
   let garages_btn = document.getElementById("garages");
+  
 
   fetch("/resources/inmobiliaria.json")
     //https://vicentucf.github.io/Inmobiliaria
@@ -37,13 +38,12 @@ window.onload = () => {
         tipo = "garage";
         loadProducts(resposta, "garage");
       };
-
-      loadProducts(resposta, "all");
+      
+      loadProducts(resposta, "all",true);
     });
 };
 
 function setListeners() {
-  
   let price_up = document.getElementById("price_up");
   let price_down = document.getElementById("price_down");
 
@@ -60,16 +60,14 @@ function setListeners() {
       product.title.toLowerCase().includes(buscant.toLowerCase())
     );
 
-    if (resultado.length > 0){
+    if (resultado.length > 0) {
       loadProducts(resultado, "all");
-    }else{
+    } else {
       Swal.fire({
         title: "Element not Found!",
         icon: "question",
       });
     }
-
-    
   };
 
   price_up.onclick = function () {
@@ -90,9 +88,16 @@ function setListeners() {
   };
 }
 
-function loadProducts(inmuebles, tipo) {
+function loadProducts(inmuebles, tipo, destacados = false) {
   let content = document.getElementById("content");
+
   content.innerHTML = "";
+  
+  if(destacados){ 
+    loadDestcados(inmuebles,'all'); 
+    content.innerHTML += "<p class='bg-dark text-light d-flex justify-content-center'>All producs</p>"
+  }
+
   for (const inmueble of inmuebles) {
     if (tipo == "all" || inmueble.features.type == tipo) {
       let card = document.createElement("div");
@@ -113,59 +118,71 @@ function loadProducts(inmuebles, tipo) {
   }
 }
 
+function loadDestcados(inmuebles){
+  let destacados = Array();
+  
+  do{
+    index = getRandomInt(0,inmuebles.length);
+  if (!destacados.includes(inmuebles[index])){
+    destacados.push(inmuebles[index]);
+  }
+  }while(destacados.length < 3);
+  loadProducts(destacados,'all');
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function loadProduct(title, services, description, price, features) {
   let id = features.id;
   loadServices(services);
   return (
-  
-    '<img src="/resources/imgs/' +
-    features.img +
+    '<img src="/resources/imgs/inmuebles/' +
+    features.img[0] +
     '" class="card-img-top mt-1" height="180px" />' +
     '<div class="card-body">' +
     '<h5 class="card-title" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">' +
     title +
-    '</h5>' +
+    "</h5>" +
     '<p class="card-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">' +
     description +
-    '</p>' +
-    '</div>' +
+    "</p>" +
+    "</div>" +
     '<ul class="list-group list-group-flush">' +
     loadServices(services) +
-    '</ul>' +
+    "</ul>" +
     '<div class="card-footer d-flex justify-content-between">' +
     '<p style="color:#e2c044;margin-top:10px;">' +
-    Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price) +
-    '</p>'+ 
-    '<button class="btn" style="background-color: #587B7F; color:white" id="'+ id +'">Saber Mas</button>' +
-    '</div>' 
+    Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(
+      price
+    ) +
+    "</p>" +
+    '<button class="btn" style="background-color: #587B7F; color:white" id="' +
+    id +
+    '">Saber Mas</button>' +
+    "</div>"
   );
-  
 }
 
 function knowMoreBtn(inmueble) {
+  let btn = document.getElementById(inmueble);
 
-    let btn = document.getElementById(inmueble);
+  btn.addEventListener("click", function () {
+    const resultado = productes.find(
+      (product) => product.features.id === inmueble
+    );
 
+    let content = document.getElementById("content");
+    content.innerHTML = knowMore(resultado);
 
-    btn.addEventListener('click', function(){
-      const resultado = productes.find(
-        (product) => product.features.id === inmueble
-      );
+    let imagenes = resultado.features.img;
 
-      let content = document.getElementById("content");
-      content.innerHTML = knowMore(resultado);
-
-      let imagenes = [
-        "../resources/imgs/casa.jpeg",
-        "../resources/imgs/edificio.jpg",
-        "../resources/imgs/garaje.jpg",
-      ];
-
-      clearInterval(interval);
-      contactBTN();
-      showImg(imagenes);
-      play(imagenes);
-    });
+    clearInterval(interval);
+    contactBTN();
+    showImg(imagenes);
+    play(imagenes);
+  });
 }
 
 function contactBTN() {
@@ -173,7 +190,7 @@ function contactBTN() {
   btn.addEventListener("click", function () {
     let content = document.getElementById("content");
     content.innerHTML = loadForm();
-    validateForm();
+    addFormListeners();
   });
 }
 
@@ -236,7 +253,7 @@ function knowMore(product) {
   );
 }
 
-function loadForm(){
+function loadForm() {
   return (
     '<form id="contact" class="m-3 col-6 justify-content-center  rounded p-4" action="index.html">' +
     '<h1><i class="fas fa-address-card me-2"></i>Contactanos</h1>' +
@@ -247,47 +264,96 @@ function loadForm(){
     '<div class="mb-3">' +
     '<label for="comment" class="form-label">Comment<i class="fas fa-comments ms-2"></i></label>' +
     '<textarea class="form-control" id="comment" rows="3" required></textarea>' +
-    '<button class="btn btn-primary mt-2">Submit</button>' +
+    "<h3 class='mt-2'>More Interests</h3>" +
+    '<div class="m-3 row">' +
+    '<div class="form-check col">' +
+    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">' +
+    '<label class="form-check-label" for="flexCheckDefault">' +
+    "Homes" +
+    "</label>" +
+    "</div>" +
+    '<div class="form-check col">' +
+    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">' +
+    '<label class="form-check-label" for="flexCheckDefault">' +
+    "Apartaments" +
+    "</label>" +
+    "</div>" +
+    '<div class="form-check col">' +
+    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">' +
+    '<label class="form-check-label" for="flexCheckDefault">' +
+    "Garages" +
+    "</label>" +
+    "</div>" +
+    "</div>" +
+    '<button class="btn btn-primary mt-2" onclick="validateForm()">Submit</button>' +
     "</form>" +
     "</div>"
   );
 }
 
-function validateForm(){
-  let correct = true;
-  let form = document.getElementById("contact");
-  let email = document.getElementById('email');
-  email.onchange = function(){
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(email.value.match(mailformat)){ 
-      email.className = 'form-control is-valid';
-      email.setCustomValidity('');
-    }else{
-      correct = false;
-      email.className = "form-control is-invalid";
-      email.setCustomValidity('not a valid email');
-    }
+function validateEmail(email){
+  let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email.value.match(mailformat)) {
+    email.className = "form-control is-valid";
+    email.setCustomValidity("");
+  } else {
+    email.className = "form-control is-invalid";
+    email.setCustomValidity("not a valid email");
   }
-
-  let comment = document.getElementById('comment');
-  comment.onchange = function(){
-    console.log('validant');
-     if (comment.value.length > 3) {
-       comment.className = "form-control is-valid";
-       comment.setCustomValidity("");
-     } else {
-       correct = false;
-       comment.className = "form-control is-invalid";
-       comment.setCustomValidity("rellena este campo");
-     }
-  }
-
-  if (correct){
-    form.submit;
-  }
- 
 }
 
+function validateComment(comment){
+   if (comment.value.length > 3) {
+     comment.className = "form-control is-valid";
+     comment.setCustomValidity("");
+   } else {
+     comment.className = "form-control is-invalid";
+     comment.setCustomValidity("rellena este campo");
+   }
+}
+
+function addFormListeners(){
+  let email = document.getElementById("email");
+  email.addEventListener("change", function () {
+    validateEmail(email);
+  });
+  let comment = document.getElementById("comment");
+  comment.addEventListener("change", function () {
+    validateComment(comment);
+  }); 
+}
+
+function validateForm() {
+  event.preventDefault();
+  let form = document.getElementById("contact");
+  let email = document.getElementById("email");
+  let comment = document.getElementById("comment");
+
+  validateEmail(email);
+  validateComment(comment);
+  
+
+  if (email.className.includes('is-valid') && (comment.className.includes('is-valid'))) {
+    let interests = document.querySelectorAll(".form-check-input");
+    let chekeds = 0;
+
+    for (const interest in interests) {
+      console.log(chekeds);
+      if (interests[interest].checked) {
+        chekeds++;
+      }
+    }
+
+    if (chekeds >= 2) {
+      form.submit();
+    }else{
+      Swal.fire({
+        title: "You need to select 2 interests!",
+        icon: "",
+      });
+    }
+  }
+}
 
 function loadServices(services) {
   let icon = "";
@@ -334,12 +400,11 @@ function printCarrusel() {
 
 function play(imagenes) {
   let imagen = document.querySelector("#imagen");
-  if(imagen != null){
-     interval = setInterval(function () {
-       nextPhoto(imagenes);
-     }, 2000);
+  if (imagen != null) {
+    interval = setInterval(function () {
+      nextPhoto(imagenes);
+    }, 4000);
   }
-  
 }
 
 function nextPhoto(imagenes) {
@@ -353,8 +418,7 @@ function nextPhoto(imagenes) {
 
 function showImg(imagenes) {
   let imagen = document.querySelector("#imagen");
-  if(imagen != null){
-    imagen.src = imagenes[posicionActual];
+  if (imagen != null) {
+    imagen.src = "/resources/imgs/inmuebles/" + imagenes[posicionActual];
   }
-  
 }

@@ -12,7 +12,7 @@
             "features":{
                  "id": "1",
                  "type":"apartament",
-                 "img":"edificio.jpg",
+                 "img":["edificio.jpg"],
                  "elevator": "Si",
                  "antiquity": "30 a 50 anys"
             }
@@ -32,7 +32,7 @@
             "features":{
                  "id": "2",
                  "type":"apartament",
-                 "img":"edificio.jpg",
+                 "img":["edificio.jpg"],
                  "elevator": "Si",
                  "antiquity": "30 a 50 anys"
             }
@@ -52,7 +52,7 @@
             "features":{
                  "id": "3",
                  "type":"home",
-                 "img":"casa.jpeg",
+                 "img":["casa.jpeg"],
                  "antiquity": "70 a 100 anys"
             }
 
@@ -71,7 +71,7 @@
             "features":{
                  "id": "4",
                  "type":"home",
-                 "img":"casa.jpeg",
+                 "img":["casa.jpeg"],
                  "antiquity": "50 a 70 anys"
             }
 
@@ -88,7 +88,7 @@
             "features":{
                  "id": "5",
                  "type":"garage",
-                 "img":"garaje.jpg",
+                 "img":["garaje.jpg"],
                  "antiquity": "10 a 20 anys"
             }
 
@@ -105,8 +105,102 @@
             "features":{
                  "id": "6",
                  "type":"garage",
-                 "img":"garaje.jpg",
+                 "img":["garaje.jpg"],
                  "antiquity": "5 a 12 anys"
+            }
+
+       },
+
+       {
+            "title":  "Exclusiva Villa / Chalet de 2232 m2 en venta en Marbella, España ",
+            "services":{
+               "bedrooms": 8,
+               "bathrooms": 8,
+               "m2": 2232
+            },
+            "description": "Lujosa Mansion con Vistas al Mar Marbella Milla de Oro. Esta lujosa villa es una obra maestra de diseño sin precedentes, materiales y mano de obra, todo muy bien situado en una parcela de 10.000m² a pocos minutos de la Milla de Oro de Marbella. Construida en un estilo neoclásico, esta lujosa vivienda principal de 2.088m² exhibe un arte que rara vez se encuentra en una construcción moderna, utilizando los mejores detalles de madera",
+            "price": 24850000,
+            "features":{
+                 "id": "7",
+                 "type":"home",
+                 "img":[
+                      "casa1.1.jpg",
+                      "casa1.2.jpg",
+                      "casa1.3.jpg",
+                      "casa1.4.jpg"
+                 ],
+                 "antiquity": "5 a 12 anys"
+            }
+
+       },
+
+       {
+            "title":  "Villa / Chalet de lujo en venta Marbella, España ",
+            "services":{
+               "bedrooms": 7,
+               "bathrooms": 9,
+               "m2": 976
+            },
+            "description": "Este es la casa más impresionante en primera línea de playa, uno de los únicos diseños modernos en la Milla de Oro, cerca de Puerto Banús.",
+            "price": 14850000,
+            "features":{
+                 "id": "8",
+                 "type":"home",
+                 "img":[
+                      "casa2.1.jpg",
+                      "casa2.2.jpg",
+                      "casa2.3.jpg",
+                      "casa2.4.jpg",
+                      "casa2.5.jpg"
+                 ],
+                 "antiquity": "6 a 8 anys"
+            }
+
+       },
+
+       {
+            "title":  "Duplex de lujo de 500 m2 en venta Barcelona, España ",
+            "services":{
+               "bedrooms": 3,
+               "bathrooms": 5,
+               "m2": 500
+            },
+            "description": "Uno de lo más grandes Lofts en Barcelona. Este tríplex loft de lujo de unos 500 m2 está en un edificio pre modernista emblemático, construidos en 1926 por un conocido arquitecto, que creó un edificio del estilo típico de la era del Eixample. Ubicado en una calle amplia peatonal, el loft está compuesto por cuatro locales que formaban parte de un antiguo almacén de material para automóviles y una antigua frutería. ",
+            "price": 1750000,
+            "features":{
+                 "id": "9",
+                 "type":"apartament",
+                 "img":[
+                      "piso1.1.jpg",
+                      "piso1.2.jpg",
+                      "piso1.3.jpg",
+                      "piso1.4.jpg",
+                      "piso1.5.jpg"
+                 ],
+                 "antiquity": "10 a 12 anys"
+            }
+
+       },
+
+       {
+            "title":  "Piso exclusivo de 535 m2 en venta en Madrid, Comunidad de Madrid ",
+            "services":{
+               "bedrooms": 7,
+               "bathrooms": 5,
+               "m2": 535
+            },
+            "description": "EL VISO, en el mejor tramo de la zona, edificio de UNA PISO POR PISO y portero, esta propiedad se encuentra en un 3er piso, totalmente exterior con buena luminosidad y privacidad. Dispone de trastero y 2 plazas de garaje para 3 coches (una de ellas es doble).",
+            "price": 3550000,
+            "features":{
+                 "id": "10",
+                 "type":"apartament",
+                 "img":[
+                      "piso2.1.jpg",
+                      "piso2.2.jpg",
+                      "piso2.3.jpg",
+                      "piso2.4.jpg"
+                 ],
+                 "antiquity": "20 a 25 anys"
             }
 
        }
