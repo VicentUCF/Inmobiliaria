@@ -12,6 +12,7 @@ window.onload = () => {
   
 
   fetch("https://vicentucf.github.io/Inmobiliaria/resources/inmobiliaria.json")
+    
     .then((resp) => {
       return resp.json();
     })
@@ -37,8 +38,8 @@ window.onload = () => {
         tipo = "garage";
         loadProducts(resposta, "garage");
       };
-
-      loadProducts(resposta, "all", true);
+      
+      loadProducts(resposta, "all",true);
     });
 };
 
@@ -137,7 +138,7 @@ function loadProduct(title, services, description, price, features) {
   let id = features.id;
   loadServices(services);
   return (
-    '<img src="Inmobiliaria/resources/imgs/inmuebles/' +
+    '<img src="./resources/imgs/inmuebles/' +
     features.img[0] +
     '" class="card-img-top mt-1" height="180px" />' +
     '<div class="card-body">' +
@@ -418,6 +419,6 @@ function nextPhoto(imagenes) {
 function showImg(imagenes) {
   let imagen = document.querySelector("#imagen");
   if (imagen != null) {
-    imagen.src = "Inmobiliaria/resources/imgs/inmuebles/" + imagenes[posicionActual];
+    imagen.src = "./resources/imgs/inmuebles/" + imagenes[posicionActual];
   }
 }
