@@ -18,7 +18,7 @@ body{
 
 #portada{
      
-       background-image: url('/resources/imgs/portada.webp');
+       background-image: url('./resources/imgs/portada.webp');
        background-size: cover;
        height:300px;
 }
